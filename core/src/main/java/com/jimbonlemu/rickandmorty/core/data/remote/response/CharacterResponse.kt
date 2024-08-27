@@ -8,5 +8,5 @@ data class CharacterResponse(
 	val results: List<CharacterItem>? = null,
 
 	@field:SerializedName("info")
-	val info: Info? = null
+	val info: Info? = null,
 )

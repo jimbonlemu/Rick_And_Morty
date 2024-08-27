@@ -13,21 +13,19 @@ import javax.inject.Singleton
 
 @Singleton
 class RemoteDataSource @Inject constructor(private val networkService: NetworkService) {
-
-    suspend fun getAllCharacters(): Flow<NetworkResponse<List<CharacterItem>>> {
+     fun getAllCharacters(): Flow<NetworkResponse<List<CharacterItem>>> {
         return flow {
             try {
                 val response = networkService.getListCharacter().results
-                if (response!= null){
+                if (!response.isNullOrEmpty()) {
                     emit(NetworkResponse.Success(response))
                 } else {
                     emit(NetworkResponse.Empty)
                 }
-            } catch (e : Exception){
+            } catch (e: Exception) {
                 emit(NetworkResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
-
 }

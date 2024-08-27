@@ -1,5 +1,6 @@
 package com.jimbonlemu.rickandmorty.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +19,6 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.ListViewHolder>()
         listData.clear()
         listData.addAll(newListData)
         listData.reverse()
-        notifyDataSetChanged()
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

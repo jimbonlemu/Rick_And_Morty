@@ -16,8 +16,7 @@
 #-keep class com.google.gson.stream.** { *; }
 
 # Application classes that will be serialized/deserialized over Gson
--keep class com.google.gson.examples.android.model.** { <fields>; }
-
+-keep class com.jimbonlemu.rickandmorty.core.data.remote.response.** { *; }
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
 # JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
 -keep class * extends com.google.gson.TypeAdapter
@@ -30,7 +29,8 @@
 @com.google.gson.annotations.SerializedName <fields>;
 }
 
-
+-keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
 ##---------------Begin: proguard configuration for Retrofit ----------
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
 # EnclosingMethod is required to use InnerClasses.

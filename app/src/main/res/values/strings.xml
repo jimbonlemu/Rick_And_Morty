@@ -2,5 +2,4 @@
     <string name="app_name">Rick And Morty</string>
     <string name="favorites">Favorites</string>
     <string name="title_favorite">Favorite</string>
-    <string name="search_character_name">Search Character Name</string>
 </resources>
