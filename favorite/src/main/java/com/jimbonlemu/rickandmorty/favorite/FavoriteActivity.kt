@@ -2,12 +2,11 @@ package com.jimbonlemu.rickandmorty.favorite
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jimbonlemu.rickandmorty.base.BaseActivity
 import com.jimbonlemu.rickandmorty.core.ui.CharacterAdapter
 import com.jimbonlemu.rickandmorty.detail.DetailActivity
 import com.jimbonlemu.rickandmorty.di.FavoriteModuleDependencies
@@ -15,7 +14,7 @@ import com.jimbonlemu.rickandmorty.favorite.databinding.ActivityFavoriteBinding
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
-class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>() {
+class FavoriteActivity :AppCompatActivity(){
 
     @Inject
     lateinit var factory: ViewModelFactory
@@ -24,6 +23,7 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>() {
         factory
     }
     private lateinit var characterAdapter: CharacterAdapter
+    private lateinit var binding: ActivityFavoriteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerFavoriteComponent.builder().context(this).appDependencies(
@@ -33,6 +33,7 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>() {
             )
         ).build().inject(this)
         super.onCreate(savedInstanceState)
+        binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         characterAdapter = CharacterAdapter()
         setupAdapter()
@@ -69,7 +70,4 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>() {
         }
 
     }
-
-    override fun setupBinding(layoutInflater: LayoutInflater): ActivityFavoriteBinding =
-        ActivityFavoriteBinding.inflate(layoutInflater)
 }
