@@ -12,5 +12,6 @@ dependencies {
     implementation libs.glide
     implementation libs.hilt.android
     kapt libs.hilt.compiler
+    debugImplementation libs.leakcanary.android
 
 }

@@ -4,7 +4,6 @@ import com.jimbonlemu.rickandmorty.core.data.local.entity.CharacterEntity
 import com.jimbonlemu.rickandmorty.core.data.remote.response.CharacterItem
 import com.jimbonlemu.rickandmorty.core.domain.model.Character
 
-
 object DataMapper {
     fun mapResponsesToEntities(input: List<CharacterItem>): List<CharacterEntity> {
         return input.map { item ->
@@ -22,7 +21,6 @@ object DataMapper {
             )
         }
     }
-
 
     fun mapEntitiesToDomain(input: List<CharacterEntity>): List<Character> =
         input.map { entity ->
@@ -51,6 +49,5 @@ object DataMapper {
         type = input.type,
         status = input.status,
         isFavorite = input.isFavorite,
-        )
-
+    )
 }

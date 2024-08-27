@@ -7,13 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val characterUseCase: CharacterUseCase) :
+class HomeViewModel @Inject constructor(characterUseCase: CharacterUseCase) :
     ViewModel() {
-    init {
-        searchCharacterName("rick")
-    }
-
     val character = characterUseCase.getAllCharacters().asLiveData()
-    fun searchCharacterName(name: String) =
-        characterUseCase.searchCharacter(name).asLiveData()
 }

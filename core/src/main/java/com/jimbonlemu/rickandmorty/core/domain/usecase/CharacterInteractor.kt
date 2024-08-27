@@ -11,9 +11,6 @@ class CharacterInteractor @Inject constructor(private val characterRepository: I
     override fun getAllCharacters(): Flow<ResourceState<List<Character>>> =
         characterRepository.getAllCharacters()
 
-    override fun searchCharacter(name: String): Flow<ResourceState<List<Character>>> =
-        characterRepository.searchCharacter(name)
-
     override fun getFavoriteCharacter(): Flow<List<Character>> =
         characterRepository.getFavoriteCharacter()
 

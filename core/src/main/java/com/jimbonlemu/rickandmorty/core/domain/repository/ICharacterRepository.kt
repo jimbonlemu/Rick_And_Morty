@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ICharacterRepository {
     fun getAllCharacters(): Flow<ResourceState<List<Character>>>
-    fun searchCharacter(name: String): Flow<ResourceState<List<Character>>>
 
     fun getFavoriteCharacter():Flow<List<Character>>
 

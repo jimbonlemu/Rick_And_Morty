@@ -5,8 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jimbonlemu.rickandmorty.R
@@ -14,7 +12,6 @@ import com.jimbonlemu.rickandmorty.base.BaseActivity
 import com.jimbonlemu.rickandmorty.core.data.utils.ResourceState
 import com.jimbonlemu.rickandmorty.core.ui.CharacterAdapter
 import com.jimbonlemu.rickandmorty.databinding.ActivityHomeBinding
-
 import com.jimbonlemu.rickandmorty.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 

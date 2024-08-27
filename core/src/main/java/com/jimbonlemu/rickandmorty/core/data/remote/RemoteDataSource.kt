@@ -30,14 +30,4 @@ class RemoteDataSource @Inject constructor(private val networkService: NetworkSe
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun searchCharacter(name: String): Flow<NetworkResponse<List<CharacterItem>>> {
-        return flow {
-            try {
-                val data =  networkService.searchCharacter(name).results
-                emit(if (data.isNullOrEmpty()) NetworkResponse.Empty else NetworkResponse.Success(data))
-            } catch (e: Exception) {
-                emit(NetworkResponse.Error(e.message.toString()))
-            }
-        }.flowOn(Dispatchers.IO)
-    }
 }
