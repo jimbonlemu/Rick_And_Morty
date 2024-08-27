@@ -1,0 +1,37 @@
+plugins {
+    alias(libs.plugins.androidDynamicFeature)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.ksp)
+    id("kotlin-parcelize")
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+}
+
+apply from: '../shared_dependencies.gradle'
+
+android {
+    namespace 'com.jimbonlemu.rickandmorty.favorite'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures{
+        viewBinding = true
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation project(":app")
+    implementation project(":core")
+}

@@ -1,0 +1,51 @@
+plugins {
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.ksp)
+    id("kotlin-parcelize")
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+}
+apply from: '../shared_dependencies.gradle'
+
+android {
+    namespace 'com.jimbonlemu.rickandmorty.core'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        buildConfigField "String", "BASE_URL", "\"https://rickandmortyapi.com/api/\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures{
+        viewBinding = true
+        buildConfig = true
+    }
+}
+
+dependencies {
+    api libs.androidx.room.ktx
+    api libs.androidx.room.runtime
+    kapt libs.androidx.room.compiler
+
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    api libs.logging.interceptor
+    api libs.androidx.lifecycle.livedata.ktx
+}
